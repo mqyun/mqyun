@@ -1,0 +1,5 @@
+import './sentence.styl'
+
+$(() => {
+  
+})

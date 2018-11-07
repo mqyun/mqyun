@@ -5,7 +5,8 @@ module.exports = {
   mode: 'production',
   entry: {
     main: './public/src/modules/main/main.js',
-    user: './public/src/modules/user/user.js'
+    user: './public/src/modules/user/user.js',
+    sentence: './public/src/modules/sentence/sentence.js'
   },
   output: {
     path: path.resolve(__dirname, 'public/dist/js'),

@@ -1,10 +1,10 @@
-const conf = {
+const config = {
   connectionLimit: 50,
   host: '127.0.0.1',
   user: 'root',
   password: '',
   database: 'mqyun',
-  port: 3306,
+  port: 8080,
   multipleStatements: true
 }
 

@@ -5,4 +5,26 @@ html
     script(src="/dist/js/main.js")
     block pageStatic
   body
+
+    mixin bodyBg
+      .body-bg
+        .body-bg-fixed
+
+    mixin userNav
+      nav.top-nav
+        img.header-img(src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541499768982&di=580de092919121dc0a84a7e6f7189d59&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201609%2F01%2F20160901101353_CVLZY.thumb.700_0.jpeg")
+        section.user-info
+          .info-item
+            span.tip 姓名：
+            | ***
+          .info-item
+            span.tip 昵称：
+            | ***
+          .info-item
+            span.tip 电话：
+            | 178********
+          .info-item
+            span.tip 地址：
+            | 浙江省杭州市西湖区
+
     block content

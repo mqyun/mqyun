@@ -33,15 +33,15 @@ router.post('/login', async (ctx, next) => {
 
 // 获取我的信息
 router.get('/myinfo', async (ctx, next) => {
-  let {
-    uid
-  } = ctx.request.body,
+  let uid = 1,
     response = initRes();
     await userModel.getUserInfo(uid).then(res => {
       response.data = res[0];
     }).catch(err => {
       changeRes(response, -100, '服务器错误，获取我的信息失败');
+      response.error = err;
     })
+    ctx.body = response;
 })
 
 module.exports = router
