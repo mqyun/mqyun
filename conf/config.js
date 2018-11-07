@@ -1,10 +1,10 @@
 const config = {
   connectionLimit: 50,
-  host: '127.0.0.1',
+  host: '120.79.235.152',
   user: 'root',
-  password: '',
+  password: 'ms686996',
   database: 'mqyun',
-  port: 8080,
+  port: 3306,
   multipleStatements: true
 }
 

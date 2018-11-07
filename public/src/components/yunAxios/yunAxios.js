@@ -7,6 +7,10 @@ axios.interceptors.request.use(config => {
   let parentDom = config.loadingDom;
   loading = new yunLoading(parentDom);
   loading.init();
+  // const token = localStorage.getItem('token');
+  // if (token) {
+  //   config.headers.common['Authorization'] = 'Bearer ' + token
+  // }
   return config;
 }, error => {
   loading.remove();
@@ -15,7 +19,7 @@ axios.interceptors.request.use(config => {
 
 axios.interceptors.response.use(response => {
   loading.remove();
-  return response;
+  return response.data;
 }, error => {
   loading.remove();
   return Promise.reject(error.response);

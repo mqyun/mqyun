@@ -6,6 +6,10 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
+// const jwtKoa = require('koa-jwt')
+
+const session = require('koa-session')
+
 const index = require('./routes/index')
 const users = require('./routes/users')
 const sentence = require('./routes/sentence')
@@ -24,6 +28,32 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
+
+// JWT : json web token
+// app.use(jwtKoa({
+//   secret: 'my_token'
+// }).unless({
+//   path: [/^\//]
+// }))
+
+app.keys = ['some secret hurr'];
+const CONFIG = {
+  key: 'koa:sess',
+  maxAge: 86400000,
+  overwrite: true,
+  httpOnly: true,
+  signed: true,
+  rolling: false,
+  renew: false
+}
+app.use(session(CONFIG, app))
+app.use(async (ctx, next) => {
+  ctx.userInfo = ctx.session.userInfo;
+  if (ctx.session.userInfo) {
+    ctx.state.userInfo = ctx.session.userInfo;
+  }
+  await next();
+})
 
 // logger
 app.use(async (ctx, next) => {
